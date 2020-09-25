@@ -12,7 +12,7 @@
     "C_Cpp.default.intelliSenseMode": "gcc-x64",
     "C_Cpp.default.customConfigurationVariables": {},
     "debug.inlineValues": true,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     //"editor.codeActionsOnSave": null,
     /*"code-runner.executorMap":{
         "c":"cd $dir && $filename -o "
