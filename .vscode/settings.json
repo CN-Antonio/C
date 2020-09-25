@@ -1,6 +1,9 @@
 {
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 2,
+    "files.associations": {
+        "any": "cpp"
+    },
     "C_Cpp.default.compilerPath": "D://mingw64//bin//g++.exe",
     "C_Cpp.default.cppStandard": "c++14",
     "C_Cpp.default.includePath": [
@@ -9,8 +12,8 @@
     "C_Cpp.default.intelliSenseMode": "gcc-x64",
     "C_Cpp.default.customConfigurationVariables": {},
     "debug.inlineValues": true,
-    "window.zoomLevel": 0,
-    "editor.codeActionsOnSave": null,
+    "window.zoomLevel": -1,
+    //"editor.codeActionsOnSave": null,
     /*"code-runner.executorMap":{
         "c":"cd $dir && $filename -o "
     }*/
