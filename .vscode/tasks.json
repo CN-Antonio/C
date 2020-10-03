@@ -2,24 +2,6 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C/C++: gcc-9 build active file",
-            "command": "/usr/bin/gcc-9",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${workspaceRoot}/debug/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
             "label": "C/C++: gcc build active file",
             "command": "/usr/bin/gcc",
             "args": [
