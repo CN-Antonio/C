@@ -6,4 +6,5 @@
 *.doc
 *.docx
 *.pdf
-#
+# Temp
+/Temp/
