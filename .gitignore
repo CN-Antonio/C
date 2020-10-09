@@ -1,2 +1,9 @@
-*.exe
+#directory
 /debug/
+#exe
+*.exe
+# documents
+*.doc
+*.docx
+*.pdf
+#
