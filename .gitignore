@@ -1,10 +1,9 @@
 #directory
 /debug/
+/Temp/
 #exe
 *.exe
 # documents
 *.doc
 *.docx
 *.pdf
-# Temp
-/Temp/

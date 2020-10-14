@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/debug/${fileBasenameNoExtension}",
-            "args": [],
+            "args": ["-lm"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
