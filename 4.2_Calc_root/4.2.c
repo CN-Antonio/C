@@ -3,7 +3,7 @@
 
 int main()
 {
-    freopen("./Temp/test.in","r",stdin);
+    // freopen("./Temp/test.in","r",stdin);
     int a,b,c;
     scanf("%d,%d,%d",&a,&b,&c);
     printf("%d %d %d\n",a,b,c);

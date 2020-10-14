@@ -6,8 +6,7 @@
 int main()
 {
     freopen("./Temp/test.in","r",stdin);
-    double a,b,c,d;
-    double s,S,degree;
+    double a,b,c,d,s,S,degree;
     scanf("%lf%lf%lf%lf%lf",&a,&b,&c,&d,&degree);
     degree/=2;
 
