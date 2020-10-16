@@ -12,7 +12,6 @@ int main()
 
     s=(a+b+c+d)/2;
     S=sqrt((s-a)*(s-b)*(s-c)*(s-d)-a*b*c*d*pow(cos(degree*ratio),2));
-    // printf("%lf\n",pow(cos(degree),2));
     printf("%lf\n",S);
 
 
