@@ -1,6 +1,6 @@
 #directory
 /debug/
-/Temp/
+#/Temp/
 #exe
 *.exe
 # documents
