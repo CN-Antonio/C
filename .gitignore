@@ -1,6 +1,7 @@
 #directory
 /debug/
 /Temp/
+/.vscode/
 #exe
 *.exe
 # documents
