@@ -11,6 +11,6 @@ int main()
     scanf("%d",&day);
     for(int i=1 ; i<day ; i++)
     {peach = (peach + 1)*2;}
-    printf("%lld",peach);
+    printf("%lld\n",peach);
     return 0;
 }
