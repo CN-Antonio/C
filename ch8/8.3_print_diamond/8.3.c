@@ -1,20 +1,32 @@
 #include<stdio.h>
 int line;
-void PrintNumers()
+
+void whilePrint()   //while method
+{
+    int k=0;
+    for(int i=1;i<=line;i++)
+    {
+        k=1;while(k<=(line-i)){printf(" ");k++;}
+        k=1;while(k<=i){printf("%d",k);k++;}
+        k=i-1;while(k>0){printf("%d",k);k--;}
+        printf("\n");
+    }
+    for(int i=(line-1);i>0;i--)
+    {
+        k=(line-i);while(k>0){printf(" ");k--;}
+        k=1;while(k<=i){printf("%d",k);k++;}
+        k=i-1;while(k>0){printf("%d",k);k--;}
+        printf("\n");
+    }
+}
+void forPrint() //for method
 {
     for(int i=1;i<=line;i++)    //i=line 
     {
+        
         for(int k=1;k<=(line-i);k++){printf(" ");}  //(space)
-        //<try> to use 'while'
         for(int j=1;j<=i;j++){printf("%d",j);}  //j = real elements in line
         for(int j=i-1;j>0;j--){printf("%d",j);} //j = real elements in line
-        //</try> it!
-        /*/
-        int k
-        do        
-        {
-            //
-        }while();//*/
         printf("\n");
     }
     for(int i=(line-1);i>0;i--)
@@ -24,7 +36,6 @@ void PrintNumers()
         for(int j=i-1;j>0;j--){printf("%d",j);}    //real ele
         printf("\n");
     }
-    // printf("\n");
 }
 
 int main()
@@ -36,10 +47,9 @@ int main()
         printf("输入参数错误\n");
         break;
     default:
-        PrintNumers();
+        // forPrint();
+        whilePrint();
         break;
     }
-    
-
     return 0;
 }
