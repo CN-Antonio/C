@@ -2,6 +2,7 @@
 /debug/
 /Temp/
 /.vscode/
+/Experiments/
 #exe
 *.exe
 # documents

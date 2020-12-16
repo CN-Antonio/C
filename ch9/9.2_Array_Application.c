@@ -34,6 +34,7 @@ double Variance(double dArray[], int nCount)    //方差
 }
 int main()
 {
+    freopen("./temp/test.in","r",stdin);
     int item;
     scanf("%d",&item);
     double Array[item];
