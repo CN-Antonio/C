@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 char s1[1000],s2[1000];
 int lens1=0,lens2=0;
 int action(int lenS1,int lenS2)
