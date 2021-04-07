@@ -75,7 +75,7 @@ void prepare()
         while (1)
         {
             //如果用户输入空格，就空循环，直到用户输入非空格的字符
-            while (tem = getchar(), tem == ' ')
+            while (tem = getchar(), tem == ' ') //字符转数字
             {
             };
 

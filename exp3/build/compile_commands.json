@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/Project/C/exp3/build",
+  "command": "D:/mingw64/bin/c++.exe   -g -o CMakeFiles/Lab3.dir/Lab3.cpp.obj -c D:/Project/C/exp3/Lab3.cpp",
+  "file": "D:/Project/C/exp3/Lab3.cpp"
+},
+{
+  "directory": "D:/Project/C/exp3/build",
+  "command": "D:/mingw64/bin/c++.exe   -g -o CMakeFiles/Lab3.dir/Lab3_run.cpp.obj -c D:/Project/C/exp3/Lab3_run.cpp",
+  "file": "D:/Project/C/exp3/Lab3_run.cpp"
+},
+{
+  "directory": "D:/Project/C/exp3/build",
+  "command": "D:/mingw64/bin/c++.exe   -g -o CMakeFiles/Lab3.dir/Lab3_fun.cpp.obj -c D:/Project/C/exp3/Lab3_fun.cpp",
+  "file": "D:/Project/C/exp3/Lab3_fun.cpp"
+}
+]

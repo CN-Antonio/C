@@ -1,20 +1,20 @@
 /****************************************************
-×÷ÕßÐÅÏ¢£º
-	ÐÕÃû£º¶­ÒÝóï   Ñ§ºÅ£º20281205   °à¼¶£º¼ÆËã»ú2007°à  Ñ§Ôº£º¼ÆËã»ú
-     Email: 20281205@bjtu.edu.cn            µç»°£º13519570701
-°æÈ¨ÉùÃ÷£º
-	°æÈ¨ÓÉ¶­ÒÝóïËùÓÐ£¬³ýÀÏÊ¦Íâ£¬Î´¾­ÔÊÐí²»µÃ¿½±´±¾ÈË×÷Òµ
-Ä£¿éÃû³Æ: 
-      ³ÌÐòÉè¼Æ ÊµÑé2
-ÕªÒª:
-  	±¾Ä£¿éÊÇ ÊµÑé2½»¸¶Îï
-ÆäËüËµÃ÷:
-    
-Ä£¿éÀúÊ·:
-	¶­ÒÝóïÓÚ2021Äê3ÔÂ16ÈÕ´´½¨±¾Ä£¿é£¬email: 20281205@bjtu.edu.cn
-    ver1: Ã÷È·³ÌÐòµÄÖ÷Òª¹¦ÄÜ£¬´´½¨ÎÄ¼þºÍmainº¯Êý£¬ÓÃ×¢ÊÍÀí³öÊµÏÖ³ÌÐòµÄ¼¸¸öÖ÷Òª²½Öè
-    ver2: ÓÃ×¢ÊÍÌîÐ´Ã¿¸öÖ÷Òª²½Öè¶ÔÓ¦µÄÎ±´úÂë
-    ver3: ²¹È«´úÂë£¬²¢ÊµÏÖÒªÇó¹¦ÄÜ
+ä½œè€…ä¿¡æ¯ï¼š
+	å§“åï¼šè‘£é€¸ç®«   å­¦å·ï¼š20281205   ç­çº§ï¼šè®¡ç®—æœº2007ç­  å­¦é™¢ï¼šè®¡ç®—æœº
+     Email: 20281205@bjtu.edu.cn            ç”µè¯ï¼š13519570701
+ç‰ˆæƒå£°æ˜Žï¼š
+	ç‰ˆæƒç”±è‘£é€¸ç®«æ‰€æœ‰ï¼Œé™¤è€å¸ˆå¤–ï¼Œæœªç»å…è®¸ä¸å¾—æ‹·è´æœ¬äººä½œä¸š
+æ¨¡å—åç§°: 
+      ç¨‹åºè®¾è®¡ å®žéªŒ2
+æ‘˜è¦:
+  	æœ¬æ¨¡å—æ˜¯ å®žéªŒ2äº¤ä»˜ç‰©
+å…¶å®ƒè¯´æ˜Ž:
+
+æ¨¡å—åŽ†å²:
+	è‘£é€¸ç®«äºŽ2021å¹´3æœˆ16æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œemail: 20281205@bjtu.edu.cn
+    ver1: æ˜Žç¡®ç¨‹åºçš„ä¸»è¦åŠŸèƒ½ï¼Œåˆ›å»ºæ–‡ä»¶å’Œmainå‡½æ•°ï¼Œç”¨æ³¨é‡Šç†å‡ºå®žçŽ°ç¨‹åºçš„å‡ ä¸ªä¸»è¦æ­¥éª¤
+    ver2: ç”¨æ³¨é‡Šå¡«å†™æ¯ä¸ªä¸»è¦æ­¥éª¤å¯¹åº”çš„ä¼ªä»£ç 
+    ver3: è¡¥å…¨ä»£ç ï¼Œå¹¶å®žçŽ°è¦æ±‚åŠŸèƒ½
 ****************************************************/
 
 
@@ -24,45 +24,46 @@
 # include <time.h>
 
 # define random(x) (rand()%x)
-char fileName[25]={0};
+char fileName[255]={0};
 
-//------------¶¨ÒåËùÐè±äÁ¿------------
+//------------å®šä¹‰æ‰€éœ€å˜é‡------------
 int Num=0;
 int NumCustom=0;
 int FileNameCustom=0;
 
 /*
-*º¯ÊýÃû³Æ£ºmain
-*º¯Êý¹¦ÄÜ£º¶ÁÈëÓÃ»§ÊäÈë·Ö±ðµ÷ÓÃ¶ÔÓ¦¹¦ÄÜº¯ÊýÊµÏÖ¹¦ÄÜ
-*ÊäÈë²ÎÊý£ºint argc£ºÃüÁîÐÐ²ÎÊý¸öÊý, char* argv[]:ÃüÁîÐÐ²ÎÊýÖµ
-*·µ»ØÖµ£ºÎÞ
-*°æ±¾ÐÅÏ¢£ºcreate by ¶­ÒÝóï,2021-03-16
+*å‡½æ•°åç§°ï¼šmain
+*å‡½æ•°åŠŸèƒ½ï¼šè¯»å…¥ç”¨æˆ·è¾“å…¥åˆ†åˆ«è°ƒç”¨å¯¹åº”åŠŸèƒ½å‡½æ•°å®žçŽ°åŠŸèƒ½
+*è¾“å…¥å‚æ•°ï¼šint argcï¼šå‘½ä»¤è¡Œå‚æ•°ä¸ªæ•°, char* argv[]:å‘½ä»¤è¡Œå‚æ•°å€¼
+*è¿”å›žå€¼ï¼šæ— 
+*ç‰ˆæœ¬ä¿¡æ¯ï¼šcreate by è‘£é€¸ç®«,2021-03-16
 */
 int main(int argc, char *argv[])
 {
     srand((int)time(0));
-	//------------µÚÒ»²½£¬ÃüÁîÐÐÔËÐÐ³ÌÐò£¬´«Èë²ÎÊý£¬Êý×ÖÎªÐèÒª¼ÇÂ¼Êý¾ÝµÄ×éÊý
+	//------------ç¬¬ä¸€æ­¥ï¼Œå‘½ä»¤è¡Œè¿è¡Œç¨‹åºï¼Œä¼ å…¥å‚æ•°ï¼Œæ•°å­—ä¸ºéœ€è¦è®°å½•æ•°æ®çš„ç»„æ•°
     for(int i=1;i<argc;i++)
     {
-        if(strspn(argv[i], "0123456789")==strlen(argv[i]) && argv[i]!="0") //ÅÐ¶Ïµ±Ç°²ÎÊýÊÇ·ñÎª·ÇÁãµÄ´¿Êý×Ö
+        if(strspn(argv[i], "0123456789")==strlen(argv[i]) && argv[i]!="0") //åˆ¤æ–­å½“å‰å‚æ•°æ˜¯å¦ä¸ºéžé›¶çš„çº¯æ•°å­—
         {
-            if(!NumCustom)  //¸³Öµ×éÊý
+            if(!NumCustom)  //èµ‹å€¼ç»„æ•°
             {
                 Num=atoi(argv[i]);
                 NumCustom=1;
             }
-            else  //×éÊýÒÑÓÐ£¬¸³ÖµÎÄ¼þÃû
+            else  //ç»„æ•°å·²æœ‰ï¼Œèµ‹å€¼æ–‡ä»¶å
             {
                 if(!FileNameCustom)
                 {
+                    
                     strcat(fileName,argv[i]);
                     FileNameCustom=1;
                 }
             }
         }
-        else //ÓÐ×Ö·û
+        else //æœ‰å­—ç¬¦
         {
-            if(!FileNameCustom)  //¸³ÖµÎÄ¼þÃû
+            if(!FileNameCustom)  //èµ‹å€¼æ–‡ä»¶å
             {
                 strcat(fileName,argv[i]);
                 FileNameCustom=1;
@@ -70,13 +71,13 @@ int main(int argc, char *argv[])
         }
     }
 
-    //------------µÚ¶þ²½£¬¶ÔÎ´¶¨ÒåµÄ²ÎÊýÖ¸¶¨Öµ
+    //------------ç¬¬äºŒæ­¥ï¼Œå¯¹æœªå®šä¹‰çš„å‚æ•°æŒ‡å®šå€¼
     if(!NumCustom)
     {Num=random(100);}
     if(!FileNameCustom)
     {strcat(fileName,"default.txt");}
     
-    //------------µÚÈý²½£¬Ê¹ÓÃrandº¯Êý½«Éú³ÉÊý¾ÝÐ´ÈëÁÙÊ±ÈÝÆ÷
+    //------------ç¬¬ä¸‰æ­¥ï¼Œä½¿ç”¨randå‡½æ•°å°†ç”Ÿæˆæ•°æ®å†™å…¥ä¸´æ—¶å®¹å™¨
     int container[Num][3];
     for(int i=0; i<Num; i++)
     {
@@ -86,13 +87,13 @@ int main(int argc, char *argv[])
         }
     }
 
-    //------------µÚËÄ²½£¬¶¨ÒåÎÄ¼þÐ´Èë²ÎÊý£¬¿ªÊ¼Ð´ÈëÎÄ¼þ
+    //------------ç¬¬å››æ­¥ï¼Œå®šä¹‰æ–‡ä»¶å†™å…¥å‚æ•°ï¼Œå¼€å§‹å†™å…¥æ–‡ä»¶
     FILE *fp = NULL;
     fp = fopen(fileName,"w+"); 
     char strTemp[25]={0};
     itoa(Num,strTemp,10);
     strcat(strTemp,"\n");
-    fputs(strTemp, fp); //Ð´ÈëÊý¾Ý×éÊý
+    fputs(strTemp, fp); //å†™å…¥æ•°æ®ç»„æ•°
 
     char strLine[25]={0};
     for(int i=0; i<Num ;i++)
@@ -102,11 +103,11 @@ int main(int argc, char *argv[])
         for(int j=0; j<3; j++)
         {
             itoa(container[i][j],strTemp,10);
-            strcat(strLine,strTemp);    //Æ´½ÓÐÐÄÚÈý¸ö·ÖÁ¿µÄ×Ö·ûÖµ
+            strcat(strLine,strTemp);    //æ‹¼æŽ¥è¡Œå†…ä¸‰ä¸ªåˆ†é‡çš„å­—ç¬¦å€¼
             if(j<2){strcat(strLine,",");}
             else if(j==2){strcat(strLine,"\n");}
         }
-        fputs(strLine, fp); //Ð´Èëµ±Ç°ÐÐµÄÈý¸ö·ÖÁ¿
+        fputs(strLine, fp); //å†™å…¥å½“å‰è¡Œçš„ä¸‰ä¸ªåˆ†é‡
     }
     fclose(fp);
 	return 0;
