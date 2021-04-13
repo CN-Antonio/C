@@ -115,5 +115,7 @@ CMakeFiles/Lab3.dir/Lab3_run.cpp.obj: D:/Project/C/exp3/Lab3_run.cpp \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ostream.tcc \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/istream.tcc \
+ D:/mingw64/x86_64-w64-mingw32/include/string.h \
+ D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
  D:/Project/C/exp3/Lab3_run.h D:/Project/C/exp3/Lab3_fun.h \
  D:/Project/C/exp3/Lab3_data.h
