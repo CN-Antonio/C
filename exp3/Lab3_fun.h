@@ -4,13 +4,16 @@
 #define _LAB3_FUN_H
 # define random(x) (rand()%x)
 
+int Argc1();
+int Argc2();
+int Argc3();
+
 int Validate(char * argv);
-int charLen(char * argv);
 int isNumber(char * argv);
 int mkdir(char * argv);
-void saveConf(char * argv);
-void inputPath();
-// void GenDataFile(CONF Data);
+void saveConf(char * argv, char * FileName, char * FilesavePath);
+void inputPath(char * FileName, char * FilesavePath);
+// void GenDataFile(char* argv[0],CONF Data);
 int GetRand(int Max,int Min);
 
 

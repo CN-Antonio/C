@@ -19,8 +19,8 @@ void GenDataFile(CONF Data);
 void Run(int argc, char *argv[])
 {
     //for test
-    cout << "argc:"<< argc<<endl;
-    cout<< "argv[0]:"<< argv[0]<<endl;
+    // cout << "argc:"<< argc<<endl;
+    // cout<< "argv[0]:"<< argv[0]<<endl;
     // cout<< "argv[1]:"<< argv[1]<<endl;
     // cout<< "argv[2]:"<< argv[2]<<endl;
 
@@ -63,29 +63,47 @@ void Run(int argc, char *argv[])
             Data.number=GetRand(Data.recordcount1,Data.recordcount2);
             printf("saved Data.number:%d\n",Data.number); //check
         }
-        // GenDataFile(Data);
+        //提示输入路径
+        printf("请输入路径与文件名：");
+        char filepath[MAX_STR_LEN]={0};
+        scanf("%s",filepath);
+        while(!Validate(filepath))
+        {
+            printf("路径非法，重新输入：");
+            scanf("%s",filepath);
+        }
+        saveConf(filepath, &Data.filename[0], &Data.filesavepath[0]);
+        GenDataFile(Data);
     }
     // --------------- argc==2 ----------------------------------
     else if(argc==2)
     {
-        cout<<"1参数"<<endl;
+        // cout<<"1参数"<<endl;
         if(isNumber(argv[1])==1) //为数值
         {
-            Data.number=atoi(number);
+            Data.number=atoi(argv[1]);
             //↓提示……
-
+            printf("请输入路径与文件名：");
+            char filepath[MAX_STR_LEN]={0};
+            scanf("%s",filepath);
+            while(!Validate(filepath))
+            {
+                printf("路径非法，重新输入：");
+                scanf("%s",filepath);
+            }
+            saveConf(filepath, Data.filename, Data.filesavepath);
             GenDataFile(Data);
         }
         else
         {
-            if(!Validate(argv[1])) //合法性检查
+            if(!Validate(argv[1])) //合法性检查，包含扩展名
             {
                 cout<<"argv1 invalid"<<endl;
                 return;
             }
             else // argv[1] valid
             {
-                saveConf(argv[1]);
+                saveConf(argv[1], &Data.filename[0], &Data.filesavepath[0]);
             }
             //以下与argc==1的段落重复
             cout<<"请输入记录条数:";
@@ -94,10 +112,10 @@ void Run(int argc, char *argv[])
                 if(Input){cout<<"输入非法，请重新输入：";}
                 memset(number, 0, sizeof(number));    // clear cache
                 scanf("%s",number);
-                printf("input number:%s\n",number);
+                // printf("input number:%s\n",number);
                 Input=1;
             }
-            cout<<"输入合法"<<endl;
+            // cout<<"输入合法"<<endl;
             if(isNumber(number)==1) //customize
             {
                 Data.number=atoi(number);
@@ -109,16 +127,16 @@ void Run(int argc, char *argv[])
                 Data.number=GetRand(Data.recordcount1,Data.recordcount2);
                 printf("saved Data.number:%d\n",Data.number); //check
             }
-            // GenDataFile(Data);
+            GenDataFile(Data);
         }
     }
     // --------------- argc==3 ----------------------------------
     else if(argc==3)
     {
-        cout<<"2 Parameters"<<endl;
+        // cout<<"2 Parameters"<<endl;
         if(isNumber(argv[1])) //argv1 is num
         {
-            cout<<"para1==num"<<endl;
+            // cout<<"para1==num"<<endl;
             Data.number=atoi(argv[1]);
             if(!Validate(argv[2]))
             {
@@ -127,14 +145,14 @@ void Run(int argc, char *argv[])
             }
             else
             {
-                saveConf(argv[2]);//取argv2做路径
-                // GenDataFile(Data);
+                saveConf(argv[2], Data.filename, Data.filesavepath);//取argv2做路径
+                GenDataFile(Data);
             }
         }
         else if(isNumber(argv[2])) //argv2 is num
         {
-            cout<<"para2==num"<<endl;
-            Data.number==atoi(argv[2]);
+            // cout<<"para2==num"<<endl;
+            Data.number=atoi(argv[2]);
             if(!Validate(argv[1]))
             {
                 cout<<"argv1 invalid"<<endl;
@@ -142,8 +160,8 @@ void Run(int argc, char *argv[])
             }
             else
             {
-                saveConf(argv[1]);//取argv1做路径
-                // GenDataFile(Data);
+                saveConf(argv[1], Data.filename, Data.filesavepath);//取argv1做路径
+                GenDataFile(Data);
             }
         }
         else
