@@ -155,7 +155,6 @@ void GenDataFile(CONF Data)
 {
     // printf("path:%s\n",Data.filesavepath);
     // printf("name:%s\n",Data.filename);
-    //---------------规范路径（./??/）
 
     //-----------判断路径类型
     int abs=0;
