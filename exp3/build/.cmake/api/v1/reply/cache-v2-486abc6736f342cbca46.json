@@ -879,7 +879,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "exp3"
 		},
 		{
 			"name" : "CMAKE_RANLIB",

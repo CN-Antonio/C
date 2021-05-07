@@ -10,10 +10,10 @@
             "command": "D:\\mingw64\\bin\\g++.exe",
             "args": [
                 "-g",
-                "${workspaceRoot}\\Lab3.cpp",
-                "${workspaceRoot}\\Lab3_fun.cpp",
+                "${workspaceRoot}\\Lab4.cpp",
+                "${workspaceRoot}\\Lab4_fun.cpp",
                 "-o",
-                "${workspaceRoot}\\build\\Lab3.exe"
+                "${workspaceRoot}\\build\\Lab4.exe"
             ],
             "options": {
                 "cwd": "D:\\mingw64\\bin"

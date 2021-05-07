@@ -1,0 +1,2 @@
+D:/mingw64/bin/ar.exe qc libLab3_run.c.a CMakeFiles/Lab3_run.c.dir/Lab3.cpp.obj
+D:/mingw64/bin/ranlib.exe libLab3_run.c.a

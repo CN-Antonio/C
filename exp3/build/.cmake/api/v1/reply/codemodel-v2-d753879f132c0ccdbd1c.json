@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "Project",
+					"name" : "exp3",
 					"targetIndexes" : 
 					[
 						0
@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Lab3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Lab3-Debug-37f85f572f4757acce28.json",
+					"jsonFile" : "target-Lab3-Debug-d9dbf16092aee703d6e8.json",
 					"name" : "Lab3",
 					"projectIndex" : 0
 				}
