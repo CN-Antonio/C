@@ -1,5 +1,5 @@
 //存储run函数需要调用的各个子函数
-#include <iostream> 
+#include <iostream>
 #include <time.h>
 #include <string>
 // #include <sys/types.h>
@@ -9,6 +9,48 @@
 
 #include "Lab4_fun.h"
 #include "Lab4_data.h"
+void GenDataFile(CONF *Data);
+void GenBinFile(CONF *Data);
+
+/*
+判断参数类型，生成保存数字
+*/
+void Argv1(char *argv, CONF *conf)
+{
+    if (isNumber(argv) == 1)
+    {
+        conf->number = atoi(argv);
+    }
+    else if (isNumber(argv) == 2)
+    {
+        conf->number = GetRand(conf->recordcount1, conf->recordcount2);
+    }
+    else
+    {
+        printf("Parameter 1: Error");
+        return;
+    }
+}
+void Argv2(char *argv);
+void Argv3(char *argv, CONF *conf)
+{
+    // if (strlen(argv) == 1 && strspn(argv, "t") != 0)
+    // {
+    //     printf("Text\n");
+    //     GenTextFile(conf);
+    // }
+    // else if (strlen(argv) == 1 && strspn(argv, "b") != 0)
+    // {
+    //     printf("Bin\n");
+    //     GenBinFile(conf);
+    // }
+    // else
+    // {
+    //     //Output error
+    //     printf("Parameter 3: File Type Error");
+    //     return;
+    // }
+}
 
 /*
 *函数名称：Validate
@@ -59,12 +101,12 @@ int Validate(char *argv, char *filename, char *filesavepath)
 *返回值：0 不合法；1 数字；2 r，随机指定
 *版本信息：create by 董逸箫，2021-04-10
 */
-int isNumber(char * argv)
+int isNumber(char *argv)
 {
     // printf("argv:%s\n",argv);
-    if(strspn(argv, "0123456789")==strlen(argv) && argv!="0")
+    if (strspn(argv, "0123456789") == strlen(argv) && argv != "0")
         return 1;
-    else if(strlen(argv)==1 && strspn(argv, "r")!=0) //输入了r，随机指定
+    else if (strlen(argv) == 1 && strspn(argv, "r") != 0) //输入了r，随机指定
         return 2;
     else
         return 0;
@@ -79,150 +121,228 @@ int isNumber(char * argv)
 *版本信息：create by 董逸箫，2021-04-14
 ！！！未完成！！！
 */
-int mkDir(char * Path)
+int mkDir(char *Path)
 {
     //判断参数Path的存在性
-    if(NULL == opendir(Path)) //当前路径不存在
+    if (NULL == opendir(Path)) //当前路径不存在
     {
         //提取上级目录
-        Path[strlen(Path)-1]='\0'; //防止"\"结尾
-        int strLen=strlen(Path);
-        while(Path[strLen-1]!='/') //未遍历到“/”时
+        Path[strlen(Path) - 1] = '\0'; //防止"\"结尾
+        int strLen = strlen(Path);
+        while (Path[strLen - 1] != '/') //未遍历到“/”时
         {
-            Path[strLen-1]=0;
+            Path[strLen - 1] = 0;
             strLen--;
         }
         //得到上级目录
-        if(NULL != opendir(Path)) //若上级目录存在
-            {}// mkdir(Path.c_str());//创建当前目录
+        if (NULL != opendir(Path)) //若上级目录存在
+        {
+        } // mkdir(Path.c_str());//创建当前目录
         else
             mkDir(Path); //判断上级目录
+
+        return 1;
     }
     else //当前目录存在
-    {return 1;}
+    {
+        return 1;
+    }
 }
 
-void inputPath(char * FileName, char * FilesavePath)
+void inputPath(char *FileName, char *FilesavePath)
 {
-    scanf("%s",FilesavePath);
+    scanf("%s", FilesavePath);
     //Validate
-    while(!Validate(FilesavePath))
+    while (!Validate(FilesavePath, FileName, FilesavePath))
     {
         printf("路径非法，重新输入：");
-        scanf("%s",FilesavePath);
+        scanf("%s", FilesavePath);
     }
 }
 
-
 /*
-*函数名称：saveConf
-*函数功能：从参数中取出文件路径,拆分成文件名和文件存储目录,写入配置信息变量
-*输入参数：文件路径,包含目录与文件名
-*返回值：无
-*版本信息：create by 董逸箫，2021-04-14
+*函数名称：ReadConfig
+*函数功能：读取配置文件
+*输入参数：参数结构体变量指针
+*返回值：0
+*版本信息：create by 董逸箫，2021-05-04
 */
-void saveConf(char * argv, char * FileName, char * FilesavePath)
+int ReadConfig(CONF *conf)
 {
-    //不创建目录，仅存储配置
-    char filename[MAX_STR_LEN]={0};
-    int strLen=strlen(argv);
-    //拆分路径与文件名
-    int i=0;
-    while(argv[strLen-i-1]!='/' && strLen-i-1>-1) //未遍历到“/”时
-    {
-        filename[i]=argv[strLen-i-1]; //倒序存
-        //删字符
-        i++;
-    }
-    // printf("i(length):%d\n",i);
-    // printf("filename:%s\n",filename);
-    for(int j=0;j<i;j++)    //指针存文件名
-    {
-        FileName[j]=filename[i-j-1]; 
-    }
-    // printf("%d\n",strLen-i);    //路径长度
-    for(int j=0;j<(strLen-i);j++)   //指针存路径
-    {
-        FilesavePath[j]=argv[j];
-    }
-    // printf("%s\n",FilesavePath);
-    // printf("%s\n",FileName);
+    char tempChar[MAX_STR_LEN] = {0};
+    FILE *fp = NULL;
+
+    fp = fopen("./conf.ini", "r");
+
+    //fgets读入换行符，fscanf不读入
+    fscanf(fp, "%s", conf->filesavepath);
+    fscanf(fp, "%s", conf->filename);
+    fscanf(fp, "%d", &conf->maxvalue1);
+    fscanf(fp, "%d", &conf->minvalue1);
+    fscanf(fp, "%d", &conf->maxvalue2);
+    fscanf(fp, "%d", &conf->minvalue2);
+    fscanf(fp, "%d", &conf->recordcount1);
+    fscanf(fp, "%d", &conf->recordcount2);
+
+    fclose(fp);
+    return 0;
 }
 
+/*
+*函数名称：GenBinFile
+*函数功能：生成二进制数据文件(3-2)
+*输入参数：结构体
+*返回值：
+*版本信息：create by 董逸箫，2021-05-04
+*/
+void GenBinFile(CONF *Data)
+{
+    //检查创建文件目录
+
+    //修改扩展名为.dat
+
+    //动态申请空间存DATAITEM
+    DATAITEM *item, *head;
+    item = (DATAITEM *)malloc(sizeof(DATAITEM) + 4);
+    head = item;
+    for (int i = 0; i < Data->number; i++)
+    {
+        item->item1 = GetRand(Data->maxvalue1, Data->minvalue1);
+        item->item2 = GetRand(Data->maxvalue1, Data->minvalue1);
+        item->item3 = GetRand(Data->maxvalue2, Data->minvalue2);
+        item++;
+    }
+    item = head; //point to first
+    //*/
+
+    //创建+写入dat文件
+    FILE *fp;
+    fp = fopen("1.dat", "wb+");
+    // fprintf(fp, "%d\n", Data->number);
+    // fwrite();
+    for (int i = 0; i < Data->number; i++)
+    {
+        //写入
+        fprintf(fp, "%d%d%d\n", item->item1, item->item2, item->item3);
+    }
+    fclose(fp);
+
+    free(item);
+}
 
 /*
-*函数名称：GenDataFile
+*函数名称：GenTextFile
 *函数功能：生成数据文件(3-2)
 *输入参数：结构体
 *返回值：
 *版本信息：create by 董逸箫，2021-04-08
 */
-void GenDataFile(CONF Data)
+void GenTextFile(CONF *Data)
 {
     // printf("path:%s\n",Data.filesavepath);
     // printf("name:%s\n",Data.filename);
 
-    //-----------判断路径类型
-    int abs=0;
-    // printf("%s\n",Data.filesavepath);
-    for(int i=0; *(Data.filesavepath+i)!=0; i++)
+    //检查创建文件目录
+
+    //修改扩展名为.dat
+
+    //动态申请空间存DATAITEM
+    DATAITEM *item, *head;
+    item = (DATAITEM *)malloc(sizeof(DATAITEM) * 3);
+    head = item;
+    for (int i = 0; i < Data->number; i++)
     {
-        if(!strspn((Data.filesavepath+i),":")) //无匹配返回0，暂定相对路径
+        item->item1 = GetRand(Data->maxvalue1, Data->minvalue1);
+        item->item2 = GetRand(Data->maxvalue1, Data->minvalue1);
+        item->item3 = GetRand(Data->maxvalue2, Data->minvalue2);
+        item++;
+    }
+    item = head; //point to first
+
+    //*/
+
+    //创建+写入dat文件
+    FILE *fp;
+    fp = fopen("1.txt", "w+");
+    fprintf(fp, "%d\n", Data->number);
+    for (int i = 0; i < Data->number; i++)
+    {
+        //写入
+        fprintf(fp, "%d,%d,%d\n", item->item1, item->item2, item->item3);
+        item++;
+    }
+    fclose(fp);
+
+    free(head);
+
+    /*/
+    //-----------判断路径类型
+    int abs = 0;
+    // printf("%s\n",Data.filesavepath);
+    for (int i = 0; *(Data->filesavepath + i) != 0; i++)
+    {
+        if (!strspn((Data->filesavepath + i), ":")) //无匹配返回0，暂定相对路径
         {
             // printf("abs:%d\n",i);
         }
         else
         {
-            abs=1;
+            abs = 1;
             break;
         }
     }
-    if(!abs)
+    if (!abs)
     {
-        strcat(Data.filesavepath,"OutputData/");
+        strcat(Data->filesavepath, "OutputData/");
     }
     // printf("%s\n",Data.filesavepath);
-    
+
     //-------------------判断并创建路径！！
-    if(!mkDir(Data.filesavepath)) 
+    if (!mkDir(Data->filesavepath))
     {
         printf("目录创建失败\n");
         return;
-    }//路径存在才继续执行
+    } //路径存在才继续执行
 
     //------------------拼接文件路径
-    char FullPath[MAX_STR_LEN]={0};
-    strcat(FullPath,Data.filesavepath);
-    strcat(FullPath,Data.filename);
-    // printf("FullPath:%s\n",FullPath);
+    char FullPath[MAX_STR_LEN] = {0};
+    strcat(FullPath, Data->filesavepath);
+    strcat(FullPath, Data->filename);
+    printf("FullPath:%s\n", FullPath);
 
     //------------------创建打开文件
     FILE *fp = NULL;
-    fp = fopen(FullPath,"w+");
+    fp = fopen(FullPath, "w+");
 
     //------------------写入条数
-    fprintf(fp,"%d\n", Data.number);
+    fprintf(fp, "%d\n", Data->number);
 
-    int container[3]={0};
-    int tempRand=0;
-    for(int i=0; i<Data.number; i++)
+    // int container[3]={0};
+    DATAITEM *item, *head;
+    item = (DATAITEM *)malloc(sizeof(DATAITEM));
+
+    int tempRand = 0;
+    for (int i = 0; i < Data->number; i++)
     {
-        for(int j=0;j<3;j++){container[j]=-1;} //clear
+        // for(int j=0;j<3;j++){container[j]=-1;} //clear
         //----------------组1
-        tempRand=GetRand(Data.maxvalue1,Data.minvalue1);
-        container[0]=tempRand;
-        
+        tempRand = GetRand(Data->maxvalue1, Data->minvalue1);
+        item->item1 = tempRand;
+
         //----------------组2
-        while(tempRand==container[0])
-        {tempRand=GetRand(Data.maxvalue1,Data.minvalue1);}
-        container[1]= tempRand;
+        while (tempRand == item->item1)
+        {
+            tempRand = GetRand(Data->maxvalue1, Data->minvalue1);
+        }
+        item->item2 = tempRand;
         //----------------组3
-        tempRand=GetRand(Data.maxvalue2,Data.minvalue2);
-        container[2]= tempRand;
+        tempRand = GetRand(Data->maxvalue2, Data->minvalue2);
+        item->item3 = tempRand;
         //----------------写入文件
-        fprintf(fp,"%d,%d,%d\n",container[0],container[1],container[2]);
+        fprintf(fp, "%d,%d,%d\n", item->item1, item->item2, item->item3);
     }
     fclose(fp);
+    //*/
     printf("文件生成成功！\n");
 }
 

@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceRoot}\\build"
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file",
+            "command": "D:\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${workspaceRoot}\\Lab4.cpp",
+                "${workspaceRoot}\\Lab4_fun.cpp",
+                "-o",
+                "${workspaceRoot}\\build\\Lab4.exe"
+            ],
+            "options": {
+                "cwd": "D:\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "type": "shell",
+            "label": "cmake",
+            "command": "cmake",
+            "args": [
+                ".."
+            ],
+        },
+        {
+            "label": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "make",
+            "args": []
+        },
+        {
+            "label":"build",
+            "dependsOn":["cmake","make"]
+        }
+    ]
+}

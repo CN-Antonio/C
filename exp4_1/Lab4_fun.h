@@ -8,9 +8,10 @@
 void Argv2(char *argv);
 void Argv3(char *argv);
 
-int Validate(char *argv, char *filename, char *filesavepath);
+int Validate(char *argv);
 int isNumber(char *argv);
 int mkdir(char *argv);
+void saveConf(char *argv, char *FileName, char *FilesavePath);
 void inputPath(char *FileName, char *FilesavePath);
 // int ReadConfig(CONF *conf);
 // void GenDataFile(CONF *Data);

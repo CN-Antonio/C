@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/Project/C/exp4/build",
+  "command": "D:\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\Lab4.dir\\Lab4.cpp.obj -c D:\\Project\\C\\exp4\\Lab4.cpp",
+  "file": "D:/Project/C/exp4/Lab4.cpp"
+},
+{
+  "directory": "D:/Project/C/exp4/build",
+  "command": "D:\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\Lab4.dir\\Lab4_run.cpp.obj -c D:\\Project\\C\\exp4\\Lab4_run.cpp",
+  "file": "D:/Project/C/exp4/Lab4_run.cpp"
+},
+{
+  "directory": "D:/Project/C/exp4/build",
+  "command": "D:\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\Lab4.dir\\Lab4_fun.cpp.obj -c D:\\Project\\C\\exp4\\Lab4_fun.cpp",
+  "file": "D:/Project/C/exp4/Lab4_fun.cpp"
+}
+]
