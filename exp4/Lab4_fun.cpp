@@ -2,6 +2,11 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include <vector>
+#include <io.h>
+#include <list>
+#include <math.h>
+#include <direct.h>
 // #include <sys/types.h>
 // #include <sys/stat.h>
 #include <dirent.h>
@@ -9,6 +14,8 @@
 
 #include "Lab4_fun.h"
 #include "Lab4_data.h"
+
+using namespace std;
 void GenDataFile(CONF *Data);
 void GenBinFile(CONF *Data);
 
@@ -66,9 +73,9 @@ int Validate(char *argv, char *filename, char *filesavepath)
     char *ext = strrchr(argv, '.');
 
     // 剔除文件名并检查目录格式
-    if (!strrchr(argv, '/') == NULL) //存在'/'进,非纯文件名
+    if (strrchr(argv, '/')) //存在'/'进,非纯文件名
     {
-        ///以"/"结尾
+        ///以"/"结尾,错误返回
         if (slash - argv == strlen(argv) - 1)
         {
             return 0;
@@ -82,15 +89,33 @@ int Validate(char *argv, char *filename, char *filesavepath)
     }
 
     //获取文件名
-    if (!strrchr(argv, '/') == NULL)
+    if (strrchr(argv, '/'))
     {
+        memset(filename, 0, sizeof(filename));
         strcat(filename, slash + 1);
         //获取目录
         slash++, *slash = '\0';
+        memset(filesavepath, 0, sizeof(filesavepath));
         strcat(filesavepath, argv);
     }
     else
         strcat(filename, argv);
+
+    //字符合法性检查
+    // filename
+    for (int i = 0; *(filename + i) != 0; i++)
+    {
+        // printf("count:%d\n",i);
+        if (strspn((filename + i), "\\/:*?\"<>|")) //对非法字符无匹配 strspn==0
+            return 0;
+    }
+    // filesavepath
+    for (int i = 0; *(filename + i) != 0; i++)
+    {
+        // printf("count:%d\n",i);
+        if (strspn((filesavepath + i), "*?\"<>|")) //对非法字符无匹配 strspn==0
+            return 0;
+    }
     return 1;
 }
 
@@ -106,58 +131,68 @@ int isNumber(char *argv)
     // printf("argv:%s\n",argv);
     if (strspn(argv, "0123456789") == strlen(argv) && argv != "0")
         return 1;
-    else if (strlen(argv) == 1 && strspn(argv, "r") != 0) //输入了r，随机指定
+    else if (!strcmp(argv, "r")) //输入了r，随机指定
         return 2;
     else
         return 0;
 }
 
-/*
-*函数名称：mkDir
-*函数功能：判断参数为路径是否存在
-*输入参数：char* argv: 需创建补全的路径
-*返回值：无
-*功能：使用递归，若上级目录存在，创建当前目录；若不存在，以上级目录路径为参数再次调用。
-*版本信息：create by 董逸箫，2021-04-14
-！！！未完成！！！
-*/
-int mkDir(char *Path)
+//得到文件路径的目录
+string GetPathDir(string filePath)
 {
-    //判断参数Path的存在性
-    if (NULL == opendir(Path)) //当前路径不存在
+    string dirPath = filePath;
+    size_t p = filePath.find_last_of('\\');
+    if (p != -1)
     {
-        //提取上级目录
-        Path[strlen(Path) - 1] = '\0'; //防止"\"结尾
-        int strLen = strlen(Path);
-        while (Path[strLen - 1] != '/') //未遍历到“/”时
-        {
-            Path[strLen - 1] = 0;
-            strLen--;
-        }
-        //得到上级目录
-        if (NULL != opendir(Path)) //若上级目录存在
-        {
-        } // mkdir(Path.c_str());//创建当前目录
-        else
-            mkDir(Path); //判断上级目录
-
-        return 1;
+        dirPath.erase(p);
     }
-    else //当前目录存在
+    return dirPath;
+}
+
+//创建多级目录
+// void CreateMultiLevel(string dir)
+void mkDir(string dir)
+{
+    if (_access(dir.c_str(), 00) == 0)
     {
-        return 1;
+        return;
+    }
+
+    list<string> dirList;
+    dirList.push_front(dir);
+
+    string curDir = GetPathDir(dir);
+    while (curDir != dir)
+    {
+        if (_access(curDir.c_str(), 00) == 0)
+        {
+            break;
+        }
+
+        dirList.push_front(curDir);
+
+        dir = curDir;
+        curDir = GetPathDir(dir);
+    }
+
+    for (auto it : dirList)
+    {
+        _mkdir(it.c_str());
     }
 }
 
 void inputPath(char *FileName, char *FilesavePath)
 {
-    scanf("%s", FilesavePath);
-    //Validate
-    while (!Validate(FilesavePath, FileName, FilesavePath))
+    char *filePath;
+    filePath = (char *)malloc(MAX_STR_LEN);
+    scanf("%s", filePath);
+    //Validate & save
+    while (!Validate(filePath, FileName, FilesavePath))
     {
         printf("路径非法，重新输入：");
-        scanf("%s", FilesavePath);
+        scanf("%s", filePath);
     }
+    free(filePath);
 }
 
 /*
@@ -189,22 +224,25 @@ int ReadConfig(CONF *conf)
 }
 
 /*
-*函数名称：GenBinFile
-*函数功能：生成二进制数据文件(3-2)
-*输入参数：结构体
+*函数名称：GenFile
+*函数功能：生成数据文件(3-2)
+*输入参数：结构体,1-仅文本文件，2-仅二进制文件，3-双文件
 *返回值：
 *版本信息：create by 董逸箫，2021-05-04
 */
-void GenBinFile(CONF *Data)
+void GenFile(CONF *Data, int type)
 {
     //检查创建文件目录
-
-    //修改扩展名为.dat
+    mkDir(Data->filesavepath);
 
     //动态申请空间存DATAITEM
     DATAITEM *item, *head;
-    item = (DATAITEM *)malloc(sizeof(DATAITEM) + 4);
+    char *ext;
+    item = (DATAITEM *)malloc(sizeof(DATAITEM) * Data->number);
     head = item;
+    clock_t clockBegin, clockEnd;
+    clockBegin = clock();
+
     for (int i = 0; i < Data->number; i++)
     {
         item->item1 = GetRand(Data->maxvalue1, Data->minvalue1);
@@ -212,138 +250,90 @@ void GenBinFile(CONF *Data)
         item->item3 = GetRand(Data->maxvalue2, Data->minvalue2);
         item++;
     }
+    clockEnd = clock();
+    printf("%dms\n", (double)clockBegin / CLK_TCK);
+    printf("%dms\n", (double)clockEnd / CLK_TCK);
+    printf("存入结构体数组耗时%dms\n", (clockEnd - clockBegin) / CLK_TCK);
     item = head; //point to first
-    //*/
+
+    //dat部分
+    //纠正扩展名
+    ext = strrchr(Data->filename, '.') + 1;
+    *ext = '\0';
+    strcat(Data->filename, "dat");
 
     //创建+写入dat文件
     FILE *fp;
-    fp = fopen("1.dat", "wb+");
-    // fprintf(fp, "%d\n", Data->number);
-    // fwrite();
-    for (int i = 0; i < Data->number; i++)
+    if (type == 2 || type == 3)
     {
-        //写入
-        fprintf(fp, "%d%d%d\n", item->item1, item->item2, item->item3);
-    }
-    fclose(fp);
-
-    free(item);
-}
-
-/*
-*函数名称：GenTextFile
-*函数功能：生成数据文件(3-2)
-*输入参数：结构体
-*返回值：
-*版本信息：create by 董逸箫，2021-04-08
-*/
-void GenTextFile(CONF *Data)
-{
-    // printf("path:%s\n",Data.filesavepath);
-    // printf("name:%s\n",Data.filename);
-
-    //检查创建文件目录
-
-    //修改扩展名为.dat
-
-    //动态申请空间存DATAITEM
-    DATAITEM *item, *head;
-    item = (DATAITEM *)malloc(sizeof(DATAITEM) * 3);
-    head = item;
-    for (int i = 0; i < Data->number; i++)
-    {
-        item->item1 = GetRand(Data->maxvalue1, Data->minvalue1);
-        item->item2 = GetRand(Data->maxvalue1, Data->minvalue1);
-        item->item3 = GetRand(Data->maxvalue2, Data->minvalue2);
-        item++;
-    }
-    item = head; //point to first
-
-    //*/
-
-    //创建+写入dat文件
-    FILE *fp;
-    fp = fopen("1.txt", "w+");
-    fprintf(fp, "%d\n", Data->number);
-    for (int i = 0; i < Data->number; i++)
-    {
-        //写入
-        fprintf(fp, "%d,%d,%d\n", item->item1, item->item2, item->item3);
-        item++;
-    }
-    fclose(fp);
-
-    free(head);
-
-    /*/
-    //-----------判断路径类型
-    int abs = 0;
-    // printf("%s\n",Data.filesavepath);
-    for (int i = 0; *(Data->filesavepath + i) != 0; i++)
-    {
-        if (!strspn((Data->filesavepath + i), ":")) //无匹配返回0，暂定相对路径
+        clockBegin = clock();
+        fp = fopen(strcat(Data->filesavepath, Data->filename), "wb+");
+        int Bit = 3 - (int)(log(Data->number) / log(256));
+        if (Data->number) //非零
         {
-            // printf("abs:%d\n",i);
+            fseek(fp, Bit, SEEK_CUR);
+            fwrite(&Data->number, sizeof(int), 1, fp);
         }
         else
         {
-            abs = 1;
-            break;
+            fseek(fp, 3, SEEK_CUR);
+            fwrite(&Data->number, sizeof(int), 1, fp);
         }
-    }
-    if (!abs)
-    {
-        strcat(Data->filesavepath, "OutputData/");
-    }
-    // printf("%s\n",Data.filesavepath);
-
-    //-------------------判断并创建路径！！
-    if (!mkDir(Data->filesavepath))
-    {
-        printf("目录创建失败\n");
-        return;
-    } //路径存在才继续执行
-
-    //------------------拼接文件路径
-    char FullPath[MAX_STR_LEN] = {0};
-    strcat(FullPath, Data->filesavepath);
-    strcat(FullPath, Data->filename);
-    printf("FullPath:%s\n", FullPath);
-
-    //------------------创建打开文件
-    FILE *fp = NULL;
-    fp = fopen(FullPath, "w+");
-
-    //------------------写入条数
-    fprintf(fp, "%d\n", Data->number);
-
-    // int container[3]={0};
-    DATAITEM *item, *head;
-    item = (DATAITEM *)malloc(sizeof(DATAITEM));
-
-    int tempRand = 0;
-    for (int i = 0; i < Data->number; i++)
-    {
-        // for(int j=0;j<3;j++){container[j]=-1;} //clear
-        //----------------组1
-        tempRand = GetRand(Data->maxvalue1, Data->minvalue1);
-        item->item1 = tempRand;
-
-        //----------------组2
-        while (tempRand == item->item1)
+        for (int i = 0; i < Data->number; i++)
         {
-            tempRand = GetRand(Data->maxvalue1, Data->minvalue1);
+            //写入
+            Bit = 3 - (int)(log(Data->number) / log(256));
+            fwrite(&item->item1, sizeof(int), 1, fp);
+            Bit = 3 - (int)(log(Data->number) / log(256));
+            fwrite(&item->item2, sizeof(int), 1, fp);
+            Bit = 3 - (int)(log(Data->number) / log(256));
+            fwrite(&item->item3, sizeof(int), 1, fp);
+            item++;
         }
-        item->item2 = tempRand;
-        //----------------组3
-        tempRand = GetRand(Data->maxvalue2, Data->minvalue2);
-        item->item3 = tempRand;
-        //----------------写入文件
-        fprintf(fp, "%d,%d,%d\n", item->item1, item->item2, item->item3);
+        fclose(fp);
+        clockEnd = clock();
+        printf("%dms\n", (double)clockBegin / CLK_TCK);
+        printf("%dms\n", (double)clockEnd / CLK_TCK);
+        printf("写入dat文件耗时%dms\n", (double)((clockEnd - clockBegin) / CLK_TCK));
+
+        ext = strrchr(Data->filesavepath, '/') + 1;
+        *ext = '\0';
+
+        printf("dat文件生成成功！\n");
     }
-    fclose(fp);
-    //*/
-    printf("文件生成成功！\n");
+
+    if (type == 1 || type == 3)
+    {
+        //txt部分（完成）
+        //纠正扩展名
+        ext = strrchr(Data->filename, '.') + 1;
+        *ext = '\0';
+        strcat(Data->filename, "txt");
+
+        //创建+写入txt文件
+        clockBegin = clock();
+        fp = fopen(strcat(Data->filesavepath, Data->filename), "w+");
+        fprintf(fp, "%d\n", Data->number);
+        item = head;
+        for (int i = 0; i < Data->number; i++)
+        {
+            //写入
+            fprintf(fp, "%d,%d,%d\n", item->item1, item->item2, item->item3);
+            item++;
+        }
+        fclose(fp);
+        clockEnd = clock();
+        printf("%dms\n", (double)clockBegin / CLK_TCK);
+        printf("%dms\n", (double)clockEnd / CLK_TCK);
+        printf("写入txt文件耗时%dms\n", (double)(clockEnd - clockBegin) / CLK_TCK);
+
+        ext = strrchr(Data->filesavepath, '/') + 1;
+        *ext = '\0';
+
+        printf("txt文件生成成功！\n");
+    }
+
+    free(head);
 }
 
 /*

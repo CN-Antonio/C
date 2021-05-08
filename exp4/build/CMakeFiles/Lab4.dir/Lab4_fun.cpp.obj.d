@@ -120,8 +120,23 @@ CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj: D:\Project\C\exp4\Lab4_fun.cpp \
  D:/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
  D:/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
  D:/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
- D:/mingw64/x86_64-w64-mingw32/include/dirent.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_construct.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_uninitialized.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_bvector.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/vector.tcc \
  D:/mingw64/x86_64-w64-mingw32/include/io.h \
  D:/mingw64/x86_64-w64-mingw32/include/string.h \
  D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/list \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_list.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/allocated_ptr.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/aligned_buffer.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/list.tcc \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/math.h \
+ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath \
+ D:/mingw64/x86_64-w64-mingw32/include/math.h \
+ D:/mingw64/x86_64-w64-mingw32/include/direct.h \
+ D:/mingw64/x86_64-w64-mingw32/include/dirent.h \
  D:\Project\C\exp4\Lab4_fun.h D:\Project\C\exp4\Lab4_data.h

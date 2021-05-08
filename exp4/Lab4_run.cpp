@@ -11,9 +11,10 @@
 
 void Argv1(char *argv, CONF *conf);
 void Argv3(char *argv, CONF *conf);
-void GenTextFile(CONF *Data);
-void GenBinFile(CONF *Data);
+void GenFile(CONF *Data, int type);
 int ReadConfig(CONF *conf);
+
+
 
 /*
 *函数名称：Run
@@ -24,7 +25,7 @@ int ReadConfig(CONF *conf);
 */
 void Run(int argc, char *argv[])
 {
-    //*/for test
+    /*/for test
     cout << "argc:" << argc << endl;
     for (int i = 0; i < argc; i++)
     {
@@ -32,22 +33,23 @@ void Run(int argc, char *argv[])
     } //*/
 
     //Init
-    clock_t clockBegin, clockEnd;
-    clockBegin = clock();
+    // clock_t clockBegin, clockEnd;
+    // clockBegin = clock();
+    // srand(rand() + (unsigned)time(0)); //以时间+随机数为种子
 
     //声明结构体变量
     CONF conf = {0};
     DATAITEM Cache = {0};
 
     //读取默认配置文件
-    // if(ReadConfig() == NULL) //read failed
+    // if(ReadConfig(&conf) == NULL) //read failed
     // {return;} //?
     ReadConfig(&conf);
     //*/ check config read
     {
         printf("Config:\n");
-        printf("%s\n%s\n", conf.filesavepath, conf.filename);
-        printf("%d\n", conf.number);
+        printf("path:%s\nname:%s\n", conf.filesavepath, conf.filename);
+        printf("number:%d\n", conf.number);
         printf("%d\n%d\n", conf.maxvalue1, conf.minvalue1);
         printf("%d\n%d\n", conf.maxvalue2, conf.minvalue2);
         printf("%d\n%d\n", conf.recordcount1, conf.recordcount2);
@@ -75,7 +77,18 @@ void Run(int argc, char *argv[])
         cout << "输入合法" << endl;
         if (isNumber(number) == 1) //customized number
         {
-            conf.number = atoi(number);
+            if (conf.recordcount1 < atoi(number)) //大于上限
+            {
+                conf.number = conf.recordcount1;
+            }
+            else if (conf.recordcount2 > atoi(number)) //小于下限
+            {
+                conf.number = conf.recordcount2;
+            }
+            else
+            {
+                conf.number = atoi(number);
+            }
             // printf("saved conf.number:%d\n",conf.number); //check
         }
         else if (isNumber(number) == 2) //random number
@@ -87,17 +100,8 @@ void Run(int argc, char *argv[])
 
         //输入路径
         printf("请输入路径与文件名：");
-        char filepath[MAX_STR_LEN] = {0};
-        scanf("%s", filepath);
-        while (!Validate(filepath, conf.filename, conf.filesavepath))
-        {
-            printf("路径非法，重新输入：");
-            scanf("%s", filepath);
-        }
-
-        // Validate(filepath, conf.filename, conf.filesavepath);
-        GenTextFile(&conf);
-        GenBinFile(&conf);
+        inputPath(conf.filename, conf.filesavepath);
+        GenFile(&conf, 3);
     } //*/
 
     //*/ --------------- argc==2 ----------------------------------
@@ -107,20 +111,30 @@ void Run(int argc, char *argv[])
         // cout<<"1参数"<<endl;
         if (!isNumber(argv[1])) //合法性检查，参数1不合法时
         {
-            cout << "invalid para!" << endl;
+            cout << "argv1 invalid!" << endl;
             return;
         }
         else if (isNumber(argv[1]) == 1)
         {
-            conf.number = atoi(argv[1]);
+            if (conf.recordcount2 < atoi(argv[1])) //大于上限
+            {
+                conf.number = conf.recordcount2;
+            }
+            else if (conf.recordcount1 > atoi(argv[1])) //小于下限
+            {
+                conf.number = conf.recordcount1;
+            }
+            else
+            {
+                conf.number = atoi(argv[1]);
+            }
         }
         else if (isNumber(argv[1]) == 2)
         {
             conf.number = GetRand(conf.recordcount1, conf.recordcount2);
         }
 
-        GenTextFile(&conf);
-        GenBinFile(&conf);
+        GenFile(&conf, 3);
     } //*/
     //*/ --------------- argc==3 ----------------------------------
     else if (argc == 3)
@@ -133,9 +147,7 @@ void Run(int argc, char *argv[])
             cout << "argv2 invalid" << endl;
             return;
         }
-
-        GenTextFile(&conf);
-        GenBinFile(&conf);
+        GenFile(&conf, 3);
 
     } //*/
 
@@ -147,18 +159,22 @@ void Run(int argc, char *argv[])
         Argv1(argv[1], &conf);
         //para2
         // Argv2(argv[2]);
-        Validate(argv[2], conf.filename, conf.filesavepath);
+        if (!Validate(argv[2], conf.filename, conf.filesavepath))
+        {
+            cout << "argv2 invalid" << endl;
+            return;
+        }
         //para3
         // Argv3(argv[3]);
         if (strlen(argv[3]) == 1 && strspn(argv[3], "t") != 0)
         {
             printf("Text\n");
-            GenTextFile(&conf);
+            GenFile(&conf, 1);
         }
         else if (strlen(argv[3]) == 1 && strspn(argv[3], "b") != 0)
         {
             printf("Bin\n");
-            GenBinFile(&conf);
+            GenFile(&conf, 2);
         }
         else
         {

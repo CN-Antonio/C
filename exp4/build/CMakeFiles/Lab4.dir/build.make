@@ -72,43 +72,43 @@ CMakeFiles/Lab4.dir/Lab4.cpp.obj: CMakeFiles/Lab4.dir/flags.make
 CMakeFiles/Lab4.dir/Lab4.cpp.obj: ../Lab4.cpp
 CMakeFiles/Lab4.dir/Lab4.cpp.obj: CMakeFiles/Lab4.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Project\C\exp4\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Lab4.dir/Lab4.cpp.obj"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4.cpp.obj -c D:\Project\C\exp4\Lab4.cpp
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4.cpp.obj -c D:\Project\C\exp4\Lab4.cpp
 
 CMakeFiles/Lab4.dir/Lab4.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab4.dir/Lab4.cpp.i"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4.cpp > CMakeFiles\Lab4.dir\Lab4.cpp.i
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4.cpp > CMakeFiles\Lab4.dir\Lab4.cpp.i
 
 CMakeFiles/Lab4.dir/Lab4.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab4.dir/Lab4.cpp.s"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4.cpp -o CMakeFiles\Lab4.dir\Lab4.cpp.s
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4.cpp -o CMakeFiles\Lab4.dir\Lab4.cpp.s
 
 CMakeFiles/Lab4.dir/Lab4_run.cpp.obj: CMakeFiles/Lab4.dir/flags.make
 CMakeFiles/Lab4.dir/Lab4_run.cpp.obj: ../Lab4_run.cpp
 CMakeFiles/Lab4.dir/Lab4_run.cpp.obj: CMakeFiles/Lab4.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Project\C\exp4\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab4.dir/Lab4_run.cpp.obj"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4_run.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4_run.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4_run.cpp.obj -c D:\Project\C\exp4\Lab4_run.cpp
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4_run.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4_run.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4_run.cpp.obj -c D:\Project\C\exp4\Lab4_run.cpp
 
 CMakeFiles/Lab4.dir/Lab4_run.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab4.dir/Lab4_run.cpp.i"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4_run.cpp > CMakeFiles\Lab4.dir\Lab4_run.cpp.i
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4_run.cpp > CMakeFiles\Lab4.dir\Lab4_run.cpp.i
 
 CMakeFiles/Lab4.dir/Lab4_run.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab4.dir/Lab4_run.cpp.s"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4_run.cpp -o CMakeFiles\Lab4.dir\Lab4_run.cpp.s
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4_run.cpp -o CMakeFiles\Lab4.dir\Lab4_run.cpp.s
 
 CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj: CMakeFiles/Lab4.dir/flags.make
 CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj: ../Lab4_fun.cpp
 CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj: CMakeFiles/Lab4.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Project\C\exp4\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4_fun.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4_fun.cpp.obj -c D:\Project\C\exp4\Lab4_fun.cpp
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj -MF CMakeFiles\Lab4.dir\Lab4_fun.cpp.obj.d -o CMakeFiles\Lab4.dir\Lab4_fun.cpp.obj -c D:\Project\C\exp4\Lab4_fun.cpp
 
 CMakeFiles/Lab4.dir/Lab4_fun.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab4.dir/Lab4_fun.cpp.i"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4_fun.cpp > CMakeFiles\Lab4.dir\Lab4_fun.cpp.i
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Project\C\exp4\Lab4_fun.cpp > CMakeFiles\Lab4.dir\Lab4_fun.cpp.i
 
 CMakeFiles/Lab4.dir/Lab4_fun.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab4.dir/Lab4_fun.cpp.s"
-	D:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4_fun.cpp -o CMakeFiles\Lab4.dir\Lab4_fun.cpp.s
+	D:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Project\C\exp4\Lab4_fun.cpp -o CMakeFiles\Lab4.dir\Lab4_fun.cpp.s
 
 # Object files for target Lab4
 Lab4_OBJECTS = \

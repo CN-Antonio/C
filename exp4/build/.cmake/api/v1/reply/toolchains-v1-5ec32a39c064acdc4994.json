@@ -39,7 +39,7 @@
 						"mingwex"
 					]
 				},
-				"path" : "D:/mingw64/bin/gcc.exe",
+				"path" : "D:/mingw64/bin/x86_64-w64-mingw32-gcc.exe",
 				"version" : "8.1.0"
 			},
 			"language" : "C",
@@ -92,7 +92,7 @@
 						"mingwex"
 					]
 				},
-				"path" : "D:/mingw64/bin/g++.exe",
+				"path" : "D:/mingw64/bin/x86_64-w64-mingw32-g++.exe",
 				"version" : "8.1.0"
 			},
 			"language" : "CXX",

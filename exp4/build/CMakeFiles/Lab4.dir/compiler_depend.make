@@ -126,10 +126,25 @@ CMakeFiles/Lab4.dir/Lab4_fun.cpp.obj: ../Lab4_fun.cpp \
   D:/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
   D:/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
   D:/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
-  D:/mingw64/x86_64-w64-mingw32/include/dirent.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_construct.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_uninitialized.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_bvector.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/vector.tcc \
   D:/mingw64/x86_64-w64-mingw32/include/io.h \
   D:/mingw64/x86_64-w64-mingw32/include/string.h \
   D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/list \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_list.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/allocated_ptr.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/aligned_buffer.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/list.tcc \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/math.h \
+  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath \
+  D:/mingw64/x86_64-w64-mingw32/include/math.h \
+  D:/mingw64/x86_64-w64-mingw32/include/direct.h \
+  D:/mingw64/x86_64-w64-mingw32/include/dirent.h \
   ../Lab4_fun.h \
   ../Lab4_data.h
 
@@ -317,6 +332,8 @@ D:/mingw64/x86_64-w64-mingw32/include/_mingw_print_pop.h:
 
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stringfwd.h:
 
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/allocated_ptr.h:
+
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/memoryfwd.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h:
@@ -335,6 +352,8 @@ D:/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_directx.h:
 
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/debug/debug.h:
 
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/list.tcc:
+
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/exception_ptr.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/crtdefs.h:
@@ -344,6 +363,8 @@ D:/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h:
 D:/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/vadefs.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath:
 
 D:/mingw64/x86_64-w64-mingw32/include/stdio.h:
 
@@ -412,6 +433,8 @@ D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed/syslimits.h:
 D:/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
 
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cctype:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_uninitialized.h:
 
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ios_base.h:
 
@@ -515,11 +538,33 @@ D:/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/pthread_time.h:
 
-D:/mingw64/x86_64-w64-mingw32/include/dirent.h:
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/vector.tcc:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_construct.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_bvector.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/string.h:
 
 D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/list:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_list.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/aligned_buffer.h:
+
+D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/math.h:
+
+D:/mingw64/x86_64-w64-mingw32/include/math.h:
+
+D:/mingw64/x86_64-w64-mingw32/include/direct.h:
+
+D:/mingw64/x86_64-w64-mingw32/include/dirent.h:
 
 ../Lab4_fun.h:
 

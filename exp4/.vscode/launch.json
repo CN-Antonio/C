@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceRoot}\\build\\Lab4.exe",
             // "args":[],
-            "args": ["3","/1.txt"],
+            "args": ["60","./outputdata/3.dat"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
@@ -24,7 +24,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build"
+            // "preLaunchTask": "build"
         }
     ]
 }
